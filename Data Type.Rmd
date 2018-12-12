@@ -1,0 +1,49 @@
+---
+title: "Data_Type(pp34~40)"
+author: "LEESUJAE"
+date: "12/12/2018"
+output: html_document
+---
+
+```{r Atomic vectors}
+x = c(2.1, 4.2, 3.5, 5.4)
+#positive integers : 지정한 위치에 원소를 반환
+x[c(3,1)]
+x[order(x)] #원소크기 순으로 정렬
+x[c(1,1)] #인덱스로 동일 원소 불러오기(duplicated indices yield duplicated values)
+x[c(2.1, 2.9)] #소수점은 절삭되어 정수로 인식(real numbers are silently truncated to integers)
+
+#Negative integers: 지정한 위치의 원소를 삭제
+x[-c(3,1)]
+x[c(-1,2)] #음수와 양수를 한 번에 실행 시킬 수는 없음
+```
+
+```{r Logical vectors}
+#논리 값이 true 인 원소 반환
+x[c(TRUE, TRUE, FALSE, FALSE)]
+x[x>3]
+x>3
+x[c(TRUE, FALSE)] #논리 값이 부분집합을 적용할 벡터보다 적을 경우는 벡터 원소 수까지 논리값 반복 적용
+x[c(TRUE, FALSE, TRUE, FALSE)] 
+
+x[c(TRUE, TRUE, NA, FALSE)] #NA 값은 NA 값으로 반환된다
+x[c(NA, TRUE,TRUE,NA)] #NA값은 NA 값으로 반환된다
+
+#nothing
+x[] #인덱스 값이 없는 경우 모든 값을 반환
+
+#zero
+x[0] #R의 첫 번째 인덱스 값은 1이어서 0은 무의미. 테스트 데이터를 실행할 때 유용
+```
+
+```{r Character Vectors}
+y = setNames(x, letters[1:4])
+y #setNames 함수를 활용하여 x 값에 a,b,c,d 적용
+
+y[c("d","c","a")]
+
+y[c("a","a","a")] #정수 인덱스처럼 문자 인덱스도 반복됨
+
+z = c(abc = 1, def =2)
+z[c("a","c")] #문자 인덱스는 정확하게 일치해야한다
+```
